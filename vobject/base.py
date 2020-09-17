@@ -332,6 +332,9 @@ class ContentLine(VBase):
         if 'QUOTED-PRINTABLE' in self.singletonparams:
             qp = True
             self.singletonparams.remove('QUOTED-PRINTABLE')
+        if 'quoted-printable' in self.singletonparams:
+            qp = True
+            self.singletonparams.remove('quoted-printable')
         if qp:
             if 'ENCODING' in self.params:
                 self.value = codecs.decode(self.value.encode("utf-8"), "quoted-printable").decode(self.params['ENCODING'])
